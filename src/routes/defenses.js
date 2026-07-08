@@ -79,7 +79,6 @@ actions = EXCLUDED.actions
 
 
 
-
 // récupérer un adversaire hasard
 router.get(
 "/random",
@@ -97,7 +96,6 @@ SELECT *
 FROM defenses
 ORDER BY RANDOM()
 LIMIT 1
-
 `
 
 );
@@ -135,9 +133,17 @@ error:error.message
 }
 
 
+});
+
+
+
+// récupérer sa propre défense
 router.get(
 "/player/:uuid",
 async(req,res)=>{
+
+
+try {
 
 
 const uuid =
@@ -178,7 +184,23 @@ res.json(
 );
 
 
+
+}
+catch(error){
+
+
+console.log(error);
+
+
+res.status(500).json({
+
+error:error.message
+
 });
+
+
+}
+
 
 });
 
