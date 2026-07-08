@@ -30,9 +30,17 @@ async(req,res)=>{
 
       `
       INSERT INTO defenses
-      (player_id,duration,actions)
+(player_id,duration,actions)
 
-      VALUES($1,$2,$3)
+VALUES($1,$2,$3)
+
+ON CONFLICT(player_id)
+
+DO UPDATE SET
+
+duration = EXCLUDED.duration,
+
+actions = EXCLUDED.actions
 
       `,
 
