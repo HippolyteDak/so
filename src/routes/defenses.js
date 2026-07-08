@@ -127,6 +127,51 @@ error:error.message
 }
 
 
+router.get(
+"/player/:uuid",
+async(req,res)=>{
+
+
+const uuid =
+req.params.uuid;
+
+
+
+const result =
+await db.query(
+
+`
+SELECT *
+FROM defenses
+WHERE player_id=$1
+LIMIT 1
+`,
+
+[
+uuid
+]
+
+);
+
+
+
+if(result.rows.length === 0){
+
+ return res.status(404).json({
+   message:"no defense"
+ });
+
+}
+
+
+
+res.json(
+ result.rows[0]
+);
+
+
+});
+
 });
 
 
