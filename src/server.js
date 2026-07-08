@@ -5,10 +5,7 @@ const defenseRoutes = require("./routes/defenses");
 const playerRoutes = require("./routes/player");
 
 
-app.use(
-"/players",
-playerRoutes
-);
+
 
 const app = express();
 
@@ -17,7 +14,10 @@ app.use(cors());
 
 app.use(express.json());
 
-
+app.use(
+"/players",
+playerRoutes
+);
 
 app.use(
     "/defenses",
