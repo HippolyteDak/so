@@ -2,7 +2,13 @@ const express = require("express");
 const cors = require("cors");
 require("dotenv").config();
 const defenseRoutes = require("./routes/defenses");
+const playerRoutes = require("./routes/player");
 
+
+app.use(
+"/players",
+playerRoutes
+);
 
 const app = express();
 

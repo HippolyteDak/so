@@ -3,7 +3,7 @@ CREATE TABLE defenses (
     id SERIAL PRIMARY KEY,
 
 
-    player_id VARCHAR(100),
+    player_id UUID UNIQUE REFERENCES users(uuid),
 
 
     duration FLOAT,
